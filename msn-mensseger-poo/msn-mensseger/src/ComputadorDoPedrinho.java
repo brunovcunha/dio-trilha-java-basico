@@ -1,9 +1,28 @@
 public class ComputadorDoPedrinho {
     public static void main(String[] args) {
-        MSNmensseger msn = new MSNmensseger();
+        ServicoMensagemInstantanea smi = null;
 
-        msn.enviarMensagem();
+        
+        String objetoEscolhido = "msn";
 
-        msn.receberMensagem();
+        switch (objetoEscolhido) {
+            case "tlg":
+                smi = new TelegramMessenger();
+                break;
+
+                case "msn":
+                smi = new MSNmessenger();
+                break;
+                
+                case "fcb":
+                smi = new FacebookMessenger();
+                break;
+        
+            default:
+                break;
+        }
+
+        smi.enviarMensagem();
+        smi.receberMensagem();
     }
 }
