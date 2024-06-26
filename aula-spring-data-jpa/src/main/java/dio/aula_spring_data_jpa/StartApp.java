@@ -1,0 +1,33 @@
+package dio.aula_spring_data_jpa;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+
+import dio.aula_spring_data_jpa.model.User;
+import dio.aula_spring_data_jpa.repository.UserRepository;
+import org.springframework.stereotype.Component;
+
+@Component
+public class StartApp implements CommandLineRunner{
+
+    @Autowired
+    private UserRepository repository;
+
+    @Override
+    public void run(String... args) throws Exception {
+        User user = new User();
+
+        user.setName("Bruno Cunha");
+        user.setUsername("bc");
+        user.setPassword("afasd2dfasdf51");
+
+        repository.save(user);
+
+        for (User u : repository.findAll()) {
+            
+            System.out.println(u);
+        }
+    
+    }
+    
+}
